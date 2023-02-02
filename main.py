@@ -4,6 +4,7 @@ import tkinter as tk
 import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
+import os
 
 root = tk.Tk()
 canvas = tk.Canvas(root, width=600, height=300)
@@ -23,7 +24,7 @@ logo_label.grid(column=1, row=0)
 #instructions
 instructions = tk.Label(root, text="Select a PDF file on your computer to extract all its text", font="Raleway")
 instructions.grid(columnspan=3, column=0, row=1)
-
+#opens the file
 def open_file():
     browse_text.set("loading...")
     file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("Pdf file", "*.pdf")])
@@ -39,9 +40,16 @@ def open_file():
         text_box.tag_configure("center", justify="center")
         text_box.tag_add("center", 1.0, "end")
         text_box.grid(column=1, row=3)
+        logo1 = Image.open('logo1.png')
+        newsize = (300, 300)
+        logo1 = logo1.resize(newsize)
+        browse_text.set("Search another file")
+        logo1 = ImageTk.PhotoImage(logo1)
+        logo1_label = tk.Label(image=logo1)
+        logo1_label.image = logo1
+        logo1_label.grid(column=1, row=0)
         
 
-        browse_text.set("Browse")
 
 #browse button
 browse_text = tk.StringVar()
