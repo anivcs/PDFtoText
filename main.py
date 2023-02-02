@@ -20,12 +20,12 @@ logo_label = tk.Label(image=logo)
 logo_label.image = logo
 
 logo_label.grid(column=1, row=0)
-
 #instructions
 instructions = tk.Label(root, text="Select a PDF file on your computer to extract all its text", font="Raleway")
 instructions.grid(columnspan=3, column=0, row=1)
 #opens the file
 def open_file():
+    global logo_label
     browse_text.set("loading...")
     file = askopenfile(parent=root, mode='rb', title="Choose a file", filetypes=[("Pdf file", "*.pdf")])
     if file:
@@ -40,14 +40,22 @@ def open_file():
         text_box.tag_configure("center", justify="center")
         text_box.tag_add("center", 1.0, "end")
         text_box.grid(column=1, row=3)
-        logo1 = Image.open('logo1.png')
-        newsize = (300, 300)
-        logo1 = logo1.resize(newsize)
         browse_text.set("Search another file")
+
+        #displays image to indicate the process worked
+        logo1 = Image.open('logo1.png')
+        newsize1 = (200, 200)
+        logo1 = logo1.resize(newsize1)
         logo1 = ImageTk.PhotoImage(logo1)
         logo1_label = tk.Label(image=logo1)
         logo1_label.image = logo1
         logo1_label.grid(column=1, row=0)
+        logo_label.destroy()
+
+        #pdf converted sucessfully message
+        instructions.destroy()
+        success = tk.Label(root, text="Successfully Converted PDF to Text", font="Raleway")
+        success.grid(columnspan=3, column=0, row=1)
         
 
 
