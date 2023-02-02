@@ -1,5 +1,5 @@
-
-#Anish Venkatesalu
+#PDFtoText 
+#Anish Venkatesalu 132
 import tkinter as tk
 import PyPDF2
 from PIL import Image, ImageTk
