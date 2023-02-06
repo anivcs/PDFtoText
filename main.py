@@ -71,7 +71,7 @@ def open_file():
         copy_text = tk.StringVar()
 
 
-        copy_btn = tk.Button(root, textvariable=copy_text, command=lambda:clickCopy(), font="Raleway", bg="#20bebe", fg="#24a0ed", height=2, width=15)
+        copy_btn = tk.Button(root, textvariable=copy_text, command=lambda:clickCopy(), font="Raleway", bg="#20bebe", fg="white", height=2, width=20)
         copy_text.set("Clip to copy to clipboard")
         copy_btn.grid(column=1, row=5)
         def clickCopy():  
@@ -82,7 +82,7 @@ def open_file():
 browse_text = tk.StringVar()
 
 
-browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font="Raleway", bg="#20bebe", fg="#24a0ed", height=2, width=15)
+browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font="Raleway", bg="#20bebe", fg="white", height=2, width=15)
 browse_text.set("Browse")
 browse_btn.grid(column=1, row=2)
 
