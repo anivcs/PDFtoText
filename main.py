@@ -9,7 +9,7 @@ import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 import pyperclip
-from tkinter import messagebox as mb
+from tkinter import messagebox
 
 #screen
 root = tk.Tk()
@@ -75,7 +75,7 @@ def open_file():
         copy_text.set("Clip to copy to clipboard")
         copy_btn.grid(column=1, row=5)
         def clickCopy():  
-            mb.showinfo("Success", "Copied to clipboard!")
+            messagebox.showinfo("Success", "Copied to clipboard!")
             pyperclip.copy(page_content)
             spam = pyperclip.paste()
 #browse button
