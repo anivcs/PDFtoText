@@ -19,7 +19,7 @@ canvas.grid(columnspan=3, rowspan=3)
 #logo
 logo = Image.open('logo.png')
 
-newsize = (400, 200)
+newsize = (550, 200)
 
 logo = logo.resize(newsize)
 
