@@ -1,10 +1,12 @@
 #PDFtoText 
 #Anish Venkatesalu 132
+#Description: Converts PDF to Text
+
 import tkinter as tk
 import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
-import os
+import pyperclip
 
 root = tk.Tk()
 canvas = tk.Canvas(root, width=600, height=300)
@@ -12,6 +14,10 @@ canvas.grid(columnspan=3, rowspan=3)
 
 #logo
 logo = Image.open('logo.png')
+
+newsize = (400, 200)
+
+logo = logo.resize(newsize)
 
 logo = ImageTk.PhotoImage(logo)
 
@@ -57,13 +63,22 @@ def open_file():
         success = tk.Label(root, text="Successfully Converted PDF to Text", font="Raleway")
         success.grid(columnspan=3, column=0, row=1)
         
+        #copy to clipboard button
+        copy_text = tk.StringVar()
 
 
+        copy_btn = tk.Button(root, textvariable=copy_text, command=lambda:clickCopy(), font="Raleway", bg="#20bebe", fg="#24a0ed", height=2, width=15)
+        copy_text.set("Clip to copy to clipboard")
+        copy_btn.grid(column=1, row=5)
+        def clickCopy():  
+            copy_text.set("Copied to clipboard!") 
+            pyperclip.copy(page_content)
+            spam = pyperclip.paste()
 #browse button
 browse_text = tk.StringVar()
 
 
-browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font="Raleway", bg="#20bebe", fg="white", height=2, width=15)
+browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font="Raleway", bg="#20bebe", fg="#24a0ed", height=2, width=15)
 browse_text.set("Browse")
 browse_btn.grid(column=1, row=2)
 
