@@ -2,12 +2,16 @@
 #Anish Venkatesalu 132
 #Description: Converts PDF to Text
 
+#import
+from tkinter import *
 import tkinter as tk
 import PyPDF2
 from PIL import Image, ImageTk
 from tkinter.filedialog import askopenfile
 import pyperclip
+from tkinter import messagebox as mb
 
+#screen
 root = tk.Tk()
 canvas = tk.Canvas(root, width=600, height=300)
 canvas.grid(columnspan=3, rowspan=3)
@@ -71,7 +75,7 @@ def open_file():
         copy_text.set("Clip to copy to clipboard")
         copy_btn.grid(column=1, row=5)
         def clickCopy():  
-            copy_text.set("Copied to clipboard!") 
+            mb.showinfo("Success", "Copied to clipboard!")
             pyperclip.copy(page_content)
             spam = pyperclip.paste()
 #browse button
